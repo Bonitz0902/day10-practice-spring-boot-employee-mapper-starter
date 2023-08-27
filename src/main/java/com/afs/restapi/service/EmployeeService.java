@@ -30,14 +30,13 @@ public class EmployeeService {
                 .orElseThrow(EmployeeNotFoundException::new);
     }
 
-    public void update(Long id, Employee employee) {
+    public void update(Long id, EmployeeRequest employeeRequest) {
         Employee toBeUpdatedEmployee = employeeRepository.findById(id)
                 .orElseThrow(EmployeeNotFoundException::new);
-        if (employee.getSalary() != null) {
-            toBeUpdatedEmployee.setSalary(employee.getSalary());
-        }
-        if (employee.getAge() != null) {
-            toBeUpdatedEmployee.setAge(employee.getAge());
+        Employee employee = EmployeeMapper.toEntity(employeeRequest);
+
+        if (employee.getSalary() != null || employee.getAge() != null) {
+            EmployeeMapper.updateEmployee(employee,toBeUpdatedEmployee);
         }
         employeeRepository.save(toBeUpdatedEmployee);
     }
