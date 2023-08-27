@@ -1,7 +1,7 @@
 package com.afs.restapi.controller;
 
-import com.afs.restapi.EmployeeRequest;
-import com.afs.restapi.EmployeeResponse;
+import com.afs.restapi.request.EmployeeRequest;
+import com.afs.restapi.response.EmployeeResponse;
 import com.afs.restapi.entity.Employee;
 import com.afs.restapi.service.EmployeeService;
 import org.springframework.http.HttpStatus;

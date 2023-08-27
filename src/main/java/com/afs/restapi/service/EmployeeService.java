@@ -1,8 +1,8 @@
 package com.afs.restapi.service;
 
-import com.afs.restapi.EmployeeMapper;
-import com.afs.restapi.EmployeeRequest;
-import com.afs.restapi.EmployeeResponse;
+import com.afs.restapi.mapper.EmployeeMapper;
+import com.afs.restapi.request.EmployeeRequest;
+import com.afs.restapi.response.EmployeeResponse;
 import com.afs.restapi.entity.Employee;
 import com.afs.restapi.exception.EmployeeNotFoundException;
 import com.afs.restapi.repository.EmployeeRepository;

@@ -1,7 +1,8 @@
-package com.afs.restapi;
+package com.afs.restapi.mapper;
 
+import com.afs.restapi.request.EmployeeRequest;
+import com.afs.restapi.response.EmployeeResponse;
 import com.afs.restapi.entity.Employee;
-import com.fasterxml.jackson.databind.util.BeanUtil;
 import org.springframework.beans.BeanUtils;
 
 public class EmployeeMapper {
