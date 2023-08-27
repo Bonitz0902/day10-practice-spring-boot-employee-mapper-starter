@@ -2,7 +2,7 @@ package com.afs.restapi;
 
 import com.afs.restapi.entity.Employee;
 import com.afs.restapi.repository.EmployeeRepository;
-import com.afs.restapi.service.EmployeeService;
+import com.afs.restapi.request.EmployeeRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -63,7 +63,7 @@ class EmployeeApiTest {
     @Test
     void should_create_employee() throws Exception {
 
-        EmployeeRequest employeeRequest = new EmployeeRequest("Alice", 18, "Femaile", 2000,null);
+        EmployeeRequest employeeRequest = new EmployeeRequest("Alice", 18, "Female", 2000,null);
         //Employee employee = getEmployeeBob();
         ObjectMapper objectMapper = new ObjectMapper();
         String employeeRequestJSON = objectMapper.writeValueAsString(employeeRequest);

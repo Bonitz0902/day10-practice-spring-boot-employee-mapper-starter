@@ -4,6 +4,7 @@ import com.afs.restapi.entity.Company;
 import com.afs.restapi.entity.Employee;
 import com.afs.restapi.repository.CompanyRepository;
 import com.afs.restapi.repository.EmployeeRepository;
+import com.afs.restapi.request.CompanyRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,6 +19,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.util.Optional;
 
 import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
@@ -94,16 +96,19 @@ class CompanyApiTest {
 
     @Test
     void should_create_company() throws Exception {
-        Company company = getCompanyOOCL();
+        CompanyRequest companyRequest = new CompanyRequest("Company A" );
 
         ObjectMapper objectMapper = new ObjectMapper();
-        String companyRequest = objectMapper.writeValueAsString(company);
+        String companyRequestJSON = objectMapper.writeValueAsString(companyRequest);
         mockMvc.perform(post("/companies")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(companyRequest))
+                        .content(companyRequestJSON))
                 .andExpect(MockMvcResultMatchers.status().is(201))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(notNullValue()))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(company.getName()));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(companyRequest.getName()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.employeeCount").value(0));
+
+
     }
 
     @Test

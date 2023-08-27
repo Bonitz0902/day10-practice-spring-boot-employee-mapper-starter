@@ -40,11 +40,11 @@ public class CompanyService {
                 .collect(Collectors.toList());
     }
 
-    public void update(Long id, Company company) {
+    public void update(Long id, CompanyRequest companyRequest) {
         Company toBeUpdatedCompany = companyRepository.findById(id)
                 .orElseThrow(CompanyNotFoundException::new);
-        toBeUpdatedCompany.setName(company.getName());
-        companyRepository.save(toBeUpdatedCompany);
+        Company company = CompanyMapper.toEntity(companyRequest);
+        CompanyMapper.UpdateCompany(company,toBeUpdatedCompany);
     }
 
     public CompanyResponse create(CompanyRequest companyRequest) {

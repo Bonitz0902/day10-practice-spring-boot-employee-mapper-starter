@@ -23,4 +23,8 @@ public class CompanyMapper {
         return companyResponse;
     }
 
+    public static void UpdateCompany(Company company, Company updateCompany){
+        BeanUtils.copyProperties(company, updateCompany);
+    }
+
 }
