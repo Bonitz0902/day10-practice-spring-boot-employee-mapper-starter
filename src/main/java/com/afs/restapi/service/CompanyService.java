@@ -41,9 +41,10 @@ public class CompanyService {
     public void update(Long id, CompanyRequest companyRequest) {
         Company toBeUpdatedCompany = companyRepository.findById(id)
                 .orElseThrow(CompanyNotFoundException::new);
-        Company company = CompanyMapper.toEntity(companyRequest);
-        CompanyMapper.updateCompany(company,toBeUpdatedCompany);
+        toBeUpdatedCompany.setName(companyRequest.getName());
         companyRepository.save(toBeUpdatedCompany);
+
+
     }
 
     public CompanyResponse create(CompanyRequest companyRequest) {
