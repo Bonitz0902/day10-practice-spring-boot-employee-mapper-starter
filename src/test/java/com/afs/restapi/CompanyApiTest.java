@@ -73,7 +73,7 @@ class CompanyApiTest {
         Company companyUpdateRequest = new Company(previousCompany.getId(), "Meta");
         ObjectMapper objectMapper = new ObjectMapper();
         String updatedEmployeeJson = objectMapper.writeValueAsString(companyUpdateRequest);
-        mockMvc.perform(put("/companies/{id}", previousCompany.getId())
+        mockMvc.perform(put("/companies/{id}", previousCompany.getId()) //TODO: Failed test case here. JpaSystemException same as the failed test case in EmployeeApiTest.
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(updatedEmployeeJson))
                 .andExpect(MockMvcResultMatchers.status().is(204));

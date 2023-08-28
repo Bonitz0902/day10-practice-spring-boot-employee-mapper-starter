@@ -25,7 +25,7 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
 
-    public Employee findById(Long id) {
+    public Employee findById(Long id) { //TODO: Use EmployeeResponse
         return employeeRepository.findById(id)
                 .orElseThrow(EmployeeNotFoundException::new);
     }
@@ -36,7 +36,7 @@ public class EmployeeService {
         Employee employee = EmployeeMapper.toEntity(employeeRequest);
 
         if (employee.getSalary() != null || employee.getAge() != null) {
-            EmployeeMapper.updateEmployee(employee,toBeUpdatedEmployee);
+            EmployeeMapper.updateEmployee(employee,toBeUpdatedEmployee); //TODO: Don't use method in mapper.
         }
         employeeRepository.save(toBeUpdatedEmployee);
     }

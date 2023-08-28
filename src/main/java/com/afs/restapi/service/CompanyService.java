@@ -28,7 +28,7 @@ public class CompanyService {
         return companyRepository.findAll();
     }
 
-    public Company findById(Long id) {
+    public Company findById(Long id) { //TODO: Utilize CompanyResponse
         return companyRepository.findById(id)
                 .orElseThrow(CompanyNotFoundException::new);
     }
